@@ -97,6 +97,7 @@ See the issues at the respective repositories for other desiderata!
 - Construct filtrations from point clouds (coordinate matrices or distance objects)
     - Introduce S3 class 'SimplicialFiltration' and subclasses
 - Prepare recipes for constructing filtrations
+    - Engines: Risper via {ripserr}, PHAT, Dionysus, GUDHI via {TDA}
 - Write `cut()` method for filtration classes (generalization of method for class 'hclust')
 
 #### {morphom}?
@@ -116,6 +117,26 @@ See the issues at the respective repositories for other desiderata!
 
 - [{recipes}](https://recipes.tidymodels.org/) [extension](https://www.tidyverse.org/blog/2022/05/recipes-update-05-20222/) for vectorizations of persistence data
     - Write steps for all {morphom} vectorizations
+
+#### mapper meta-package
+
+- coordinate installation/attachment of mapper-related packages
+    - {landmark}
+    - {simplextree}
+    - {Cover}
+    - {Mapper}
+    - {reebit}
+    - {interplex}
+    - {tidyplex}
+
+#### persistent homology meta-package
+
+- coordinated installation/attachment of PH-related packages
+    - {ripserr}
+    - {perrrsist}/{filtratr}
+    - {morphom}
+    - {phoment}
+    - {TDAstats}
 
 ## People
 
