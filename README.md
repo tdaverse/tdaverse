@@ -1,17 +1,19 @@
 # tdaverse
 
-## Mission
+## Mission / Vision
+
+
+
+## Motivation
 
 Topological data analysis (TDA) relies heavily on mature libraries like [PHAT](https://bitbucket.org/phat-code/phat/src/master/), [Dionysus](https://www.mrzv.org/software/dionysus/), and [GUDHI](https://gudhi.inria.fr/).
 While these libraries have interfaces to Python and, through [the {TDA} package](https://cran.r-project.org/package=TDA), R, they have been developed primarily by and for statistical topologists.
 As TDA matures and standard workflows emerge, the need arises for more accessible and modular implementations.
 The [SciKit-TDA](https://scikit-tda.org/) project, an extension of SciPy, is underway in Python for this purpose. The **tdaverse** collection is intended to meet these needs in R through a [tidyverse](https://www.tidyverse.org/) lens.
+
 The tidyverse consists of numerous R packages that are built upon a shared set of syntactic and grammatical conventions and designed to interface naturally with each other.
 With its sibling collections [r-lib](https://github.com/r-lib) and [tidymodels](https://www.tidymodels.org/), it provides a comprehensive toolkit for building advanced data analysis and modeling pipelines.
-
-## Vision
-
-The goal of **tdaverse** is to provide the data structures, computational engines, statistical models, and visualization tools needed to efficiently explore and analyze topological data in R and to integrate these tasks into tidyverse workflows.
+The goal of **tdaverse** is to provide the data structures, computational engines, statistical models, and visualization tools needed to efficiently explore and analyze topological data in R and to integrate these tasks into tidy workflows.
 
 ## Objectives
 
@@ -28,40 +30,40 @@ See the issues at the respective repositories for other desiderata!
 
 ### Published packages
 
-#### {tdaunif}
+#### [{tdaunif}](https://corybrunson.github.io/tdaunif/)
 
 - Implement (partial) Latin hypercube sampling for sample remainder when using area-preserving maps ([issue 31](https://github.com/corybrunson/tdaunif/issues/31))
 - Write samplers from compact matrix groups ([issue 24](https://github.com/corybrunson/tdaunif/issues/24))
 
-#### {simplextree}
+#### [{simplextree}](https://github.com/peekxc/simplextree/)
 
 - Reconcile v1.0.2 with {Mapper}
 - Compute simplicial homology
 
-#### {interplex}
+#### [{interplex}](https://github.com/corybrunson/interplex)
 
 - Add methods for simplicial filtrations ([issue 3](https://github.com/corybrunson/interplex/issues/3))
 
-#### {ripserr}
+#### [{ripserr}](https://github.com/rrrlw/ripserr/)
 
 - Recover representative cocycles and cycles ([issue 26](https://github.com/rrrlw/ripserr/issues/26))
 
-#### {TDAstats}
+#### [{TDAstats}](https://rrrlw.github.io/TDAstats/)
 
 - Replace spinoff functionality with dependencies
     - {ripserr}
     - {ggtda}
 - New methods
     - Write `print()` and `summary()` methods for tests (cf. base R statistical tests)
-    - Write {broom} `tidy()` and `glance()` methods
+    - Write [{broom}](https://broom.tidymodels.org/) `tidy()` and `glance()` methods
 
 ### Incubating packages
 
-#### {landmark}
+#### [{landmark}](https://github.com/corybrunson/landmark)
 
-- Write a more efficient C++ implementation
+- Write a more efficient C++ implementation of lastfirst
 
-#### {Mapper}
+#### [{Mapper}](https://peekxc.github.io/Mapper/)
 
 - Reconcile branch [`simplextree-0.9.1`](https://github.com/corybrunson/Mapper/tree/simplextree-0.9.1) with {simplextree} v1.0.2
 - New features
@@ -70,7 +72,7 @@ See the issues at the respective repositories for other desiderata!
 - Replace ball and neighborhood covers with {landmark} dependencies
 - Implement other validated clustering methods
 
-#### {ggtda}
+#### [{ggtda}](https://rrrlw.github.io/ggtda/)
 
 - Write new layers
     - persistent terraces
@@ -108,14 +110,12 @@ See the issues at the respective repositories for other desiderata!
 
 - Create wrapper class 'tbl_plex' for simplicial complex objects
     - Activate one dimension at a time, à la [{tidygraph}](https://tidygraph.data-imaginist.com/)'s 'tbl_graph'
-    - Manipulate & annotate simplicial complexes à la [{ordr}](https://corybrunson.github.io/ordr/)'s 'tbl_ord'
+    - Manipulate & annotate simplices à la [{ordr}](https://corybrunson.github.io/ordr/)'s 'tbl_ord'
 
 #### {phoment}?
 
 - [{recipes}](https://recipes.tidymodels.org/) [extension](https://www.tidyverse.org/blog/2022/05/recipes-update-05-20222/) for vectorizations of persistence data
-    - persistence images
-    - persistence landscapes
-    - persistence curves
+    - Write steps for all {morphom} vectorizations
 
 ## People
 
