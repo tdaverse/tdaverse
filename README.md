@@ -1,9 +1,5 @@
 # tdaverse
 
-## Mission / Vision
-
-
-
 ## Motivation
 
 Topological data analysis (TDA) relies heavily on mature libraries like [PHAT](https://bitbucket.org/phat-code/phat/src/master/), [Dionysus](https://www.mrzv.org/software/dionysus/), and [GUDHI](https://gudhi.inria.fr/).
@@ -15,134 +11,114 @@ The tidyverse consists of numerous R packages that are built upon a shared set o
 With its sibling collections [r-lib](https://github.com/r-lib) and [tidymodels](https://www.tidymodels.org/), it provides a comprehensive toolkit for building advanced data analysis and modeling pipelines.
 The goal of **tdaverse** is to provide the data structures, computational engines, statistical models, and visualization tools needed to efficiently explore and analyze topological data in R and to integrate these tasks into tidy workflows.
 
-## Objectives
-
-The following are high priorities across the tdaverse.
-See the issues at the respective repositories for other desiderata!
-
-### Across all packages
-
-- Standardize {roxygen2} + {rmarkdown} documentation
-- Ensure consistent naming conventions for functions, parameters, etc.
-    - Use simple whole words, e.g. `dimension` rather than `dim` and `max_dim`
-- Write vignettes to illustrate couplings of multiple packages
-    - Encourage natural pipelines using `%>%` or `|>`
+## Packages
 
 ### Published packages
 
-#### [{tdaunif}](https://corybrunson.github.io/tdaunif/)
+#### interplex
 
-- Implement (partial) Latin hypercube sampling for sample remainder when using area-preserving maps ([issue 31](https://github.com/corybrunson/tdaunif/issues/31))
-- Write samplers from compact matrix groups ([issue 24](https://github.com/corybrunson/tdaunif/issues/24))
+Inspired by [{intergraph}](https://github.com/mbojan/intergraph), the {interplex} package provides coercers between different data structures that encode simplicial complexes, and also converts between these and graph and network structures (with the loss of 2- and higher-dimensional simplices).
 
-#### [{simplextree}](https://github.com/peekxc/simplextree/)
+This package will enable tdaverse users to couple functionality from other packages into their workflows, for example layout algorithms from {igraph} and simplicial filtrations from [GUDHI](https://gudhi.inria.fr/) (via {reticulate}).
 
-- Reconcile v1.0.2 with {Mapper}
-- Compute simplicial homology
+* [GitHub](https://github.com/corybrunson/interplex)
+* [CRAN](https://cran.r-project.org/package=interplex)
 
-#### [{interplex}](https://github.com/corybrunson/interplex)
+#### simplextree
 
-- Add methods for simplicial filtrations ([issue 3](https://github.com/corybrunson/interplex/issues/3))
+{simplextree} is an R package aimed at simplifying computation for simplicial complexes. The package provides R bindings to a simplex tree data structure implemented in C++11 and exported as an Rcpp module. Instances can be created from abstract or geometric data and exported and imported via serialization, and they can be efficiently inspected, queried, modified, and traversed using both Rcpp and S3 methods. The underlying library implementation also exports a C++ header, which can be specified as a dependency and used in other packages via {Rcpp} attributes.
 
-#### [{ripserr}](https://github.com/rrrlw/ripserr/)
+simplextree will interface with other packages for various tasks: to sample geometric complexes based on arbitrary manifolds with {tdaunif}, to construct and update the nerves of mappers in {Mapper}, and to perform computations involving simplicial complexes stored in other formats via {interplex}.
 
-- Recover representative cocycles and cycles ([issue 26](https://github.com/rrrlw/ripserr/issues/26))
+* [GitHub](https://github.com/peekxc/simplextree/)
+* [CRAN](https://cran.r-project.org/package=simplextree)
 
-#### [{TDAstats}](https://rrrlw.github.io/TDAstats/)
+#### ripserr
 
-- Replace spinoff functionality with dependencies
-    - {ripserr}
-    - {ggtda}
-- New methods
-    - Write `print()` and `summary()` methods for tests (cf. base R statistical tests)
-    - Write [{broom}](https://broom.tidymodels.org/) `tidy()` and `glance()` methods
+{ripserr} ports the Ripser and Cubical Ripser persistent homology computational engines from C++ via Rcpp. It can be used as a convenient and efficient tool in TDA pipelines involving point cloud data (Risper) or image and volume data (Cubical Ripser).
+
+ripserr is designed as a minimal standalone package and will be called to compute persistence data when underlying simplicial filtrations are not needed.
+
+* [GitHub](https://github.com/rrrlw/ripserr)
+* [CRAN](https://cran.r-project.org/package=ripserr)
+
+#### TDAstats
+
+Persistent homology can be used in hypothesis testing to compare the topological structure of two point clouds. {TDAstats} uses a permutation test in conjunction with the Wasserstein metric for nonparametric statistical inference.
+
+TDAstats was originally designed with three goals in mind: the calculation, statistical inference, and visualization of persistent homology. Since its release, calculation has been moved to engine ports like {risperr} and {ggplot2}-style visualization has been moved to {ggtda}. Ongoing development of TDAstats will focus on statistical inference.
+
+* [GitHub](https://github.com/rrrlw/tdastats)
+* [CRAN](https://cran.r-project.org/package=TDAstats)
+
+#### tdaunif
+
+Methods for detecting topological structure from point cloud data sets are often validated by applying them to point clouds sampled from spaces with known topology. Functions that generate such samples are therefore valuable to developers of topological–statistical software. The goal of {tdaunif} is to assemble a comprehensive collection of such samplers for convenient use.
+
+In addition testing TDA software, tdaunif will be used with {simplextree} to generate geometric random simplicial complexes and on its own as an educational tool for the study of ≥3-dimensional manifolds.
+
+* [GitHub](https://github.com/corybrunson/tdaunif/)
+* [CRAN](https://cran.r-project.org/package=tdaunif)
 
 ### Incubating packages
 
-#### [{landmark}](https://github.com/corybrunson/landmark)
+#### landmark
 
-- Write a more efficient C++ implementation of lastfirst
+The {landmark} package provides functions to calculate landmark sets for finite metric spaces using the maxmin procedure (for fixed-radius balls) or an adaptation of it for rank data (for roughly fixed-cardinality nearest neighborhoods). These procedures can also return membership lists for the covers centered at these landmark sets. These covering method engines will be invoked by {Mapper} and other arbitrary cover–based constructions.
 
-#### [{Mapper}](https://peekxc.github.io/Mapper/)
+* [GitHub](https://github.com/corybrunson/landmark)
 
-- Reconcile branch [`simplextree-0.9.1`](https://github.com/corybrunson/Mapper/tree/simplextree-0.9.1) with {simplextree} v1.0.2
-- New features
-    - Add public method to subset data indices or rows of a lens cover set or a pullback cover set
-    - Add color bars to annotated plots
-- Replace ball and neighborhood covers with {landmark} dependencies
-- Implement other validated clustering methods
+#### Mapper
 
-#### [{ggtda}](https://rrrlw.github.io/ggtda/)
+The {Mapper} package provides a set of tools for computing the mapper construction.
+Previous versions of this package included the simplex tree class and the maxmin procedure, which have been or are being spun off and expanded as the {simplextree} and {landmark} packages.
 
-- Write new layers
-    - persistent terraces
-    - persistent images
-- Write `fortify()` and/or `autoplot()` methods for 'PHom' class and {TDAstats} test and model classes
+* [GitHub](https://github.com/peekxc/Mapper/)
+* [simplextree-0.9.1 devel](https://github.com/corybrunson/Mapper/tree/simplextree-0.9.1)
+
+#### ggtda
+
+The {ggtda} package provides {ggplot2} layers (statistical transformations and geometric elements) and themes for publication-quality plots of data arising from topological objects and models. Persistent homology can be computed for continuous functions and Reeb graphs as well as point clouds, and ggtda layers are in development for numerous plot types that have been proposed to gain insight from persistence data. In addition, ggtda also provides layers to conveniently plot ball covers, Vietoris–Rips complexes, and Čech complexes for 2-dimensional point clouds.
+
+* [GitHub](https://github.com/rrrlw/ggtda/)
 
 ### Conceived packages
 
-#### {Cover}
+#### Cover
 
-- Spinoff the `CoverRef` class and nerve constructors from {Mapper}
-- Add support for towers of covers
+Covers of data sets are ubiquitous in lower-level topological methods, including mapper-like constructions.
+In order to allow more flexible implementations, the object-oriented package {Cover} would spin off the `CoverRef` R6 class from {Mapper} and introduce tools for efficiently storing and analyzing towers and other aggregates of covers.
 
-#### {reebit}?
+#### reebit
 
-- Interface to Tu, Hajij, & Rosen's Java program [`ReebGraphPairing`](https://github.com/USFDataVisualization/ReebGraphPairing) by way of [{rJava}](https://rforge.net/rJava/)
-- Return extended persistence data in class 'PHom'
-- Ensure that hex sticker includes a frog
+Reeb graphs can be represented as graphs with height or value attributes, but few methods are available to perform basic computations like critical point pairing.
+For starters, an R wrapper of the [ReebGraphPairing](https://github.com/USFDataVisualization/ReebGraphPairing) Java program could produce (extended) persistent homology for downstream analysis.
 
-#### {perrrsist}? | {filtratr}?
+#### perrrsist / filtratr
 
-- Construct filtrations from point clouds (coordinate matrices or distance objects)
-    - Introduce S3 class 'SimplicialFiltration' and subclasses
-- Prepare recipes for constructing filtrations
-    - Engines: Risper via {ripserr}, PHAT, Dionysus, GUDHI via {TDA}
-- Write `cut()` method for filtration classes (generalization of method for class 'hclust')
+A great advantage of [GUDHI](https://gudhi.inria.fr/) is the ability to work directly with simplicial filtrations, including to construct them from raw data and to compute persistent data from them.
+{ripserr} sidesteps these objects, but they can be performed using {TDA}.
+The idea for this package is to port different engines for computing and processing filtrations, analogously to [{parsnip}](https://github.com/tidymodels/parsnip).
 
-#### {morphom}?
+#### morphom
 
-- Collect common or validated transformations of persistence data
-    - [Persistence images](https://jmlr.org/papers/v18/16-337.html)
-    - Persistence landscapes (interface to [Dłotko & Bubenik's C++ toolbox](https://www2.math.upenn.edu/~dlotko/persistenceLandscape.html))
-    - [Feature curves](https://aapm.onlinelibrary.wiley.com/doi/abs/10.1002/mp.15255)
+A variety of vectorizations for persistence data have been proposed and validated, often to achieve stability properties.
+This package would consolidate them.
 
-#### {tidyplex}
+#### tidyplex
 
-- Create wrapper class 'tbl_plex' for simplicial complex objects
-    - Activate one dimension at a time, à la [{tidygraph}](https://tidygraph.data-imaginist.com/)'s 'tbl_graph'
-    - Manipulate & annotate simplices à la [{ordr}](https://corybrunson.github.io/ordr/)'s 'tbl_ord'
+Analogous to [{tidygraph}](https://github.com/thomasp85/tidygraph), this package would provide a "tidy" API to print, summarize, annotate, and perhaps visualize simplicial complexes and filtrations.
 
-#### {phoment}?
+#### phoment
 
-- [{recipes}](https://recipes.tidymodels.org/) [extension](https://www.tidyverse.org/blog/2022/05/recipes-update-05-20222/) for vectorizations of persistence data
-    - Write steps for all {morphom} vectorizations
-
-#### mapper meta-package
-
-- coordinate installation/attachment of mapper-related packages
-    - {landmark}
-    - {simplextree}
-    - {Cover}
-    - {Mapper}
-    - {reebit}
-    - {interplex}
-    - {tidyplex}
-
-#### persistent homology meta-package
-
-- coordinated installation/attachment of PH-related packages
-    - {ripserr}
-    - {perrrsist}/{filtratr}
-    - {morphom}
-    - {phoment}
-    - {TDAstats}
+This package would wrap the vectorizations of {morphom} into a set of preprocessing steps for use with [{recipes}](https://github.com/tidymodels/recipes).
 
 ## People
 
 ### Contribute
 
 To learn more and contribute to package design or development, please visit the GitHub repositories and consider commenting on or creating an issue!
+Or check [this list of low-, medium-, and high-hanging fruit](objectives.md).
 
 ### Coordinators
 
