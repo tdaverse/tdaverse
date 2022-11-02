@@ -120,3 +120,8 @@ See the issues at the respective repositories for other desiderata!
     - {morphom}
     - {phoment}
     - {TDAstats}
+
+### Trans-package objectives
+
+A [CRAN Task View](https://cran.rstudio.com/web/views/) for computational topology and topological data analysis may be in order.
+See [this guide to proposing a new CRAN task view](https://github.com/cran-task-views/ctv/blob/main/Proposal.md).
