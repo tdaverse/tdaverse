@@ -87,7 +87,6 @@ See the issues at the respective repositories for other desiderata!
 
 - Collect common or validated transformations of persistence data
     - [Persistence images](https://jmlr.org/papers/v18/16-337.html)
-    - Persistence landscapes (interface to [Dłotko & Bubenik's C++ toolbox](https://www2.math.upenn.edu/~dlotko/persistenceLandscape.html))
     - [Feature curves](https://aapm.onlinelibrary.wiley.com/doi/abs/10.1002/mp.15255)
 
 #### {tidyplex}

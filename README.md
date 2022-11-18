@@ -82,6 +82,10 @@ The {ggtda} package provides {ggplot2} layers (statistical transformations and g
 
 * [GitHub](https://github.com/rrrlw/ggtda/)
 
+#### plt
+
+{plt} will provide an Rcpp interface to [the Persistence Landscapes Toolbox](https://www2.math.upenn.edu/~dlotko/persistenceLandscape.html).
+
 ### Conceived packages
 
 #### Cover
