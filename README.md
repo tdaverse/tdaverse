@@ -84,7 +84,10 @@ The {ggtda} package provides {ggplot2} layers (statistical transformations and g
 
 #### plt
 
-{plt} will provide an Rcpp interface to [the Persistence Landscapes Toolbox](https://www2.math.upenn.edu/~dlotko/persistenceLandscape.html).
+{plt} provides an {Rcpp} interface to [the Persistence Landscapes Toolbox](https://www2.math.upenn.edu/~dlotko/persistenceLandscape.html).
+The C++ class for persistence landscapes is exposed as an Rcpp module and wrapped as an S4 class. Vector space operations and additional routines are provided through R.
+
+* [GitHub](https://github.com/corybrunson/plt/)
 
 ### Conceived packages
 
