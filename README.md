@@ -96,27 +96,27 @@ The C++ class for persistence landscapes is exposed as an Rcpp module and wrappe
 Covers of data sets are ubiquitous in lower-level topological methods, including mapper-like constructions.
 In order to allow more flexible implementations, the object-oriented package {Cover} would spin off the `CoverRef` R6 class from {Mapper} and introduce tools for efficiently storing and analyzing towers and other aggregates of covers.
 
-#### reebit
+#### reebit ?
 
 Reeb graphs can be represented as graphs with height or value attributes, but few methods are available to perform basic computations like critical point pairing.
 For starters, an R wrapper of the [ReebGraphPairing](https://github.com/USFDataVisualization/ReebGraphPairing) Java program could produce (extended) persistent homology for downstream analysis.
 
-#### perrrsist / filtratr
+#### perrrsist / filtratr ?
 
 A great advantage of [GUDHI](https://gudhi.inria.fr/) is the ability to work directly with simplicial filtrations, including to construct them from raw data and to compute persistent data from them.
 {ripserr} sidesteps these objects, but they can be performed using {TDA}.
 The idea for this package is to port different engines for computing and processing filtrations, analogously to [{parsnip}](https://github.com/tidymodels/parsnip).
 
-#### morphom
+#### morphom ?
 
-A variety of vectorizations for persistence data have been proposed and validated, often to achieve stability properties.
+[A variety of vectorizations for persistence data](http://arxiv.org/abs/2212.09703) have been proposed and validated, often to achieve stability properties.
 This package would consolidate them.
 
 #### tidyplex
 
 Analogous to [{tidygraph}](https://github.com/thomasp85/tidygraph), this package would provide a "tidy" API to print, summarize, annotate, and perhaps visualize simplicial complexes and filtrations.
 
-#### phoment
+#### phoment ?
 
 This package would wrap the vectorizations of {morphom} into a set of preprocessing steps for use with [{recipes}](https://github.com/tidymodels/recipes).
 
