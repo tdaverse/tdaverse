@@ -5,10 +5,10 @@
 Topological data analysis (TDA) relies heavily on mature libraries like [PHAT](https://bitbucket.org/phat-code/phat/src/master/), [Dionysus](https://www.mrzv.org/software/dionysus/), and [GUDHI](https://gudhi.inria.fr/).
 While these libraries have interfaces to Python and, through [the {TDA} package](https://cran.r-project.org/package=TDA), R, they have been developed primarily by and for statistical topologists.
 As TDA matures and standard workflows emerge, the need arises for more accessible and modular implementations.
-The [SciKit-TDA](https://scikit-tda.org/) project, an extension of SciPy, is underway in Python for this purpose. The **tdaverse** collection is intended to meet these needs in R through a [tidyverse](https://www.tidyverse.org/) lens.
+The [SciKit-TDA](https://scikit-tda.org/) project, an extension of SciPy, is underway in Python for this purpose. The **tdaverse** collection is intended to meet these needs in R through a [Tidyverse](https://www.tidyverse.org/) lens.
 
-The tidyverse consists of numerous R packages that are built upon a shared set of syntactic and grammatical conventions and designed to interface naturally with each other.
-With its sibling collections [r-lib](https://github.com/r-lib) and [tidymodels](https://www.tidymodels.org/), it provides a comprehensive toolkit for building advanced data analysis and modeling pipelines.
+The Tidyverse consists of numerous R packages that are built upon a shared set of syntactic and grammatical conventions and designed to interface naturally with each other.
+With its sibling collection [Tidymodels](https://www.tidymodels.org/), it provides a comprehensive toolkit for building advanced data analysis and modeling pipelines.
 The goal of **tdaverse** is to provide the data structures, computational engines, statistical models, and visualization tools needed to efficiently explore and analyze topological data in R and to integrate these tasks into tidy workflows.
 
 ## Packages
@@ -21,7 +21,7 @@ Inspired by [{intergraph}](https://github.com/mbojan/intergraph), the {interplex
 
 This package will enable tdaverse users to couple functionality from other packages into their workflows, for example layout algorithms from {igraph} and simplicial filtrations from [GUDHI](https://gudhi.inria.fr/) (via {reticulate}).
 
-* [GitHub](https://github.com/corybrunson/interplex)
+* [GitHub](https://github.com/tdaverse/interplex)
 * [CRAN](https://cran.r-project.org/package=interplex)
 
 #### simplextree
@@ -39,7 +39,7 @@ simplextree will interface with other packages for various tasks: to sample geom
 
 ripserr is designed as a minimal standalone package and will be called to compute persistence data when underlying simplicial filtrations are not needed.
 
-* [GitHub](https://github.com/rrrlw/ripserr)
+* [GitHub](https://github.com/tdaverse/ripserr)
 * [CRAN](https://cran.r-project.org/package=ripserr)
 
 #### TDAstats
@@ -57,7 +57,7 @@ Methods for detecting topological structure from point cloud data sets are often
 
 In addition testing TDA software, tdaunif will be used with {simplextree} to generate geometric random simplicial complexes and on its own as an educational tool for the study of ≥3-dimensional manifolds.
 
-* [GitHub](https://github.com/corybrunson/tdaunif/)
+* [GitHub](https://github.com/tdaverse/tdaunif/)
 * [CRAN](https://cran.r-project.org/package=tdaunif)
 
 ### Incubating packages
@@ -80,7 +80,7 @@ Previous versions of this package included the simplex tree class and the maxmin
 
 The {ggtda} package provides {ggplot2} layers (statistical transformations and geometric elements) and themes for publication-quality plots of data arising from topological objects and models. Persistent homology can be computed for continuous functions and Reeb graphs as well as point clouds, and ggtda layers are in development for numerous plot types that have been proposed to gain insight from persistence data. In addition, ggtda also provides layers to conveniently plot ball covers, Vietoris–Rips complexes, and Čech complexes for 2-dimensional point clouds.
 
-* [GitHub](https://github.com/rrrlw/ggtda/)
+* [GitHub](https://github.com/tdaverse/ggtda/)
 
 #### plt
 
@@ -89,7 +89,18 @@ The C++ class for persistence landscapes is exposed as an Rcpp module and wrappe
 
 * [GitHub](https://github.com/corybrunson/plt/)
 
+#### tdarec
+
+This is a [{recipes}](https://github.com/tidymodels/recipes) extension that provides pre-processing steps to compute persistent homology from data and to calculate vectorizations of persistence diagrams.
+
+* [GitHub](https://github.com/corybrunson/tdarec)
+
 ### Conceived packages
+
+#### phutil
+
+A helper package comprising low-level persistent homology tools (**PH util**ities) shared by multiple tdaverse packages, for example an S3 class for persistence data and engine deployment for computing persistent homology.
+(Persistence is phutil.)
 
 #### Cover
 
@@ -107,18 +118,9 @@ A great advantage of [GUDHI](https://gudhi.inria.fr/) is the ability to work dir
 {ripserr} sidesteps these objects, but they can be performed using {TDA}.
 The idea for this package is to port different engines for computing and processing filtrations, analogously to [{parsnip}](https://github.com/tidymodels/parsnip).
 
-#### morphom ?
-
-[A variety of vectorizations for persistence data](http://arxiv.org/abs/2212.09703) have been proposed and validated, often to achieve stability properties.
-This package would consolidate them.
-
 #### tidyplex
 
 Analogous to [{tidygraph}](https://github.com/thomasp85/tidygraph), this package would provide a "tidy" API to print, summarize, annotate, and perhaps visualize simplicial complexes and filtrations.
-
-#### phoment ?
-
-This package would wrap the vectorizations of {morphom} into a set of preprocessing steps for use with [{recipes}](https://github.com/tidymodels/recipes).
 
 ## People
 
