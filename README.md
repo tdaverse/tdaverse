@@ -134,4 +134,5 @@ Or check [this list of low-, medium-, and high-hanging fruit](objectives.md).
 - **Raoul R. Wadhwa** (Cleveland Clinic Lerner College of Medicine, Case Western Reserve University, Ohio, USA)
 - **Matt Piekenbrock** (Khoury College of Computer Sciences, Northeastern University, Massachusetts, USA)
 - **Jason Cory Brunson** (Laboratory for Systems Medicine, Division of Pulmonary, Critical Care, and Sleep Medicine, University of Florida, Florida, USA)
+- **James Otto** (Department of Biometrics, Alcon Laboratories, Texas, USA)
 - **Aymeric Stamm** (Jean Leray Mathematics Laboratory, National Center for Scientific Research, France)
