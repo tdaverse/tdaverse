@@ -21,7 +21,6 @@ See the issues at the respective repositories for other desiderata!
 #### [{simplextree}](https://github.com/peekxc/simplextree/)
 
 - Reconcile v1.0.2 with {Mapper}
-- Compute simplicial homology
 
 #### [{interplex}](https://github.com/corybrunson/interplex)
 
@@ -33,9 +32,6 @@ See the issues at the respective repositories for other desiderata!
 
 #### [{TDAstats}](https://rrrlw.github.io/TDAstats/)
 
-- Replace spinoff functionality with dependencies
-    - {ripserr}
-    - {ggtda}
 - New methods
     - Write `print()` and `summary()` methods for tests (cf. base R statistical tests)
     - Write [{broom}](https://broom.tidymodels.org/) `tidy()` and `glance()` methods
@@ -55,25 +51,12 @@ See the issues at the respective repositories for other desiderata!
 - Replace ball and neighborhood covers with {landmark} dependencies
 - Implement other validated clustering methods
 
-#### [{ggtda}](https://rrrlw.github.io/ggtda/)
-
-- Write new layers
-    - persistent terraces
-    - persistent images
-- Write `fortify()` and/or `autoplot()` methods for 'PHom' class and {TDAstats} test and model classes
-
 ### Conceived packages
 
 #### {Cover}
 
 - Spinoff the `CoverRef` class and nerve constructors from {Mapper}
 - Add support for towers of covers
-
-#### {reebit}?
-
-- Interface to Tu, Hajij, & Rosen's Java program [`ReebGraphPairing`](https://github.com/USFDataVisualization/ReebGraphPairing) by way of [{rJava}](https://rforge.net/rJava/)
-- Return extended persistence data in class 'PHom'
-- Ensure that hex sticker includes a frog
 
 #### {perrrsist}? | {filtratr}?
 
@@ -83,22 +66,11 @@ See the issues at the respective repositories for other desiderata!
     - Engines: Risper via {ripserr}, PHAT, Dionysus, GUDHI via {TDA}
 - Write `cut()` method for filtration classes (generalization of method for class 'hclust')
 
-#### {morphom}?
-
-- Collect common or validated transformations of persistence data
-    - [Persistence images](https://jmlr.org/papers/v18/16-337.html)
-    - [Feature curves](https://aapm.onlinelibrary.wiley.com/doi/abs/10.1002/mp.15255)
-
 #### {tidyplex}
 
 - Create wrapper class 'tbl_plex' for simplicial complex objects
     - Activate one dimension at a time, à la [{tidygraph}](https://tidygraph.data-imaginist.com/)'s 'tbl_graph'
     - Manipulate & annotate simplices à la [{ordr}](https://corybrunson.github.io/ordr/)'s 'tbl_ord'
-
-#### {phoment}?
-
-- [{recipes}](https://recipes.tidymodels.org/) [extension](https://www.tidyverse.org/blog/2022/05/recipes-update-05-20222/) for vectorizations of persistence data
-    - Write steps for all {morphom} vectorizations
 
 #### mapper meta-package
 

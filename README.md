@@ -15,50 +15,74 @@ The goal of **tdaverse** is to provide the data structures, computational engine
 
 ### Published packages
 
-#### interplex
+#### tdaunif
 
-Inspired by [{intergraph}](https://github.com/mbojan/intergraph), the {interplex} package provides coercers between different data structures that encode simplicial complexes, and also converts between these and graph and network structures (with the loss of 2- and higher-dimensional simplices).
+Methods for detecting topological structure from point cloud data sets are often validated by applying them to point clouds sampled from spaces with known topology. Functions that generate such samples are therefore valuable to developers of topological–statistical software. The goal of {tdaunif} is to assemble a comprehensive collection of such samplers for convenient use.
 
-This package will enable tdaverse users to couple functionality from other packages into their workflows, for example layout algorithms from {igraph} and simplicial filtrations from [GUDHI](https://gudhi.inria.fr/) (via {reticulate}).
+In addition testing TDA software, {tdaunif} will be used with {simplextree} to generate geometric random simplicial complexes and on its own as an educational tool for the study of ≥3-dimensional manifolds.
 
-* [GitHub](https://github.com/tdaverse/interplex)
-* [CRAN](https://cran.r-project.org/package=interplex)
+* [GitHub](https://github.com/tdaverse/tdaunif/)
+* [CRAN](https://cran.r-project.org/package=tdaunif)
 
 #### simplextree
 
-{simplextree} is an R package aimed at simplifying computation for simplicial complexes. The package provides R bindings to a simplex tree data structure implemented in C++11 and exported as an Rcpp module. Instances can be created from abstract or geometric data and exported and imported via serialization, and they can be efficiently inspected, queried, modified, and traversed using both Rcpp and S3 methods. The underlying library implementation also exports a C++ header, which can be specified as a dependency and used in other packages via {Rcpp} attributes.
+An R package aimed at simplifying computation for simplicial complexes. The package provides R bindings to a simplex tree data structure implemented in C++11 and exported as an Rcpp module. Instances can be created from abstract or geometric data and exported and imported via serialization, and they can be efficiently inspected, queried, modified, and traversed using both Rcpp and S3 methods. The underlying library implementation also exports a C++ header, which can be specified as a dependency and used in other packages via {Rcpp} attributes.
 
-simplextree will interface with other packages for various tasks: to sample geometric complexes based on arbitrary manifolds with {tdaunif}, to construct and update the nerves of mappers in {Mapper}, and to perform computations involving simplicial complexes stored in other formats via {interplex}.
+{simplextree} will interface with other packages for various tasks: to sample geometric complexes based on arbitrary manifolds with {tdaunif}, to construct and update the nerves of mappers in {Mapper}, and to perform computations involving simplicial complexes stored in other formats via {interplex}.
 
 * [GitHub](https://github.com/peekxc/simplextree/)
 * [CRAN](https://cran.r-project.org/package=simplextree)
 
 #### ripserr
 
-{ripserr} ports the Ripser and Cubical Ripser persistent homology computational engines from C++ via Rcpp. It can be used as a convenient and efficient tool in TDA pipelines involving point cloud data (Risper) or image and volume data (Cubical Ripser).
+An R interface to the Ripser and Cubical Ripser persistent homology computational engines from C++ via {Rcpp}. It can be used as a convenient and efficient tool in TDA pipelines involving point cloud data (Risper) or image and volume data (Cubical Ripser).
 
-ripserr is designed as a minimal standalone package and will be called to compute persistence data when underlying simplicial filtrations are not needed.
+{ripserr} is designed as a minimal standalone package and will be called to compute persistence data when underlying simplicial filtrations are not needed.
 
 * [GitHub](https://github.com/tdaverse/ripserr)
 * [CRAN](https://cran.r-project.org/package=ripserr)
 
+#### phutil
+
+A helper package comprising low-level persistent homology tools (**PH util**ities) to be shared by multiple tdaverse packages, currently an S3 class for persistence data and a {cpp11} interface to the [Hera](https://github.com/anigmetov/hera) library to compute Wasserstein distances.
+(Persistence is phutil.)
+
+* [GitHub](https://github.com/tdaverse/phutil)
+* [CRAN](https://cran.r-project.org/package=phutil)
+
+#### interplex
+
+A collection of coercers between different data structures that encode simplicial complexes (including graphs/networks), inspired by [{intergraph}](https://github.com/mbojan/intergraph).
+
+{interplex} enables tdaverse users to couple functionality from other packages into their workflows, for example layout algorithms from {igraph} and simplicial filtrations from [GUDHI](https://gudhi.inria.fr/) (via {reticulate}).
+
+* [GitHub](https://github.com/tdaverse/interplex)
+* [CRAN](https://cran.r-project.org/package=interplex)
+
+#### inphr
+
+
+
+* [GitHub](https://github.com/tdaverse/inphr)
+* [CRAN](https://cran.r-project.org/package=inphr)
+
+#### tdarec
+
+A [{recipes}](https://github.com/tidymodels/recipes) and [{dials}](https://github.com/tidymodels/dials) extension that provides pre-processing steps to compute persistent homology from data and to calculate vectorizations of persistence diagrams. It relies on {TDA} and {ripserr} to compute PH and on the [{TDAvec}](https://github.com/uislambekov/TDAvec/) package to compute vectorizations.
+
+{tdarec} enables Tidymodels users to seamlessly build topological transformations into their machine learning workflows.
+
+* [GitHub](https://github.com/corybrunson/tdarec)
+* [CRAN](https://cran.r-project.org/package=tdarec)
+
 #### TDAstats
 
-Persistent homology can be used in hypothesis testing to compare the topological structure of two point clouds. {TDAstats} uses a permutation test in conjunction with the Wasserstein metric for nonparametric statistical inference.
-
-TDAstats was originally designed with three goals in mind: the calculation, statistical inference, and visualization of persistent homology. Since its release, calculation has been moved to engine ports like {risperr} and {ggplot2}-style visualization has been moved to {ggtda}. Ongoing development of TDAstats will focus on statistical inference.
+{TDAstats} was originally designed with three goals in mind: to compute persistent homology, to visualize persistence data, and to perform topological statistical inferenence between data sets.
+Since its release, these tasks have been superseded by {risperr}, {ggtda}, and {inphr}, respectively.
+Because it is widely used and has few dependencies, {TDAstats} will be maintained as legacy software.
 
 * [GitHub](https://github.com/rrrlw/tdastats)
 * [CRAN](https://cran.r-project.org/package=TDAstats)
-
-#### tdaunif
-
-Methods for detecting topological structure from point cloud data sets are often validated by applying them to point clouds sampled from spaces with known topology. Functions that generate such samples are therefore valuable to developers of topological–statistical software. The goal of {tdaunif} is to assemble a comprehensive collection of such samplers for convenient use.
-
-In addition testing TDA software, tdaunif will be used with {simplextree} to generate geometric random simplicial complexes and on its own as an educational tool for the study of ≥3-dimensional manifolds.
-
-* [GitHub](https://github.com/tdaverse/tdaunif/)
-* [CRAN](https://cran.r-project.org/package=tdaunif)
 
 ### Incubating packages
 
@@ -76,41 +100,32 @@ Previous versions of this package included the simplex tree class and the maxmin
 * [GitHub](https://github.com/peekxc/Mapper/)
 * [simplextree-0.9.1 devel](https://github.com/corybrunson/Mapper/tree/simplextree-0.9.1)
 
-#### ggtda
+#### rgp
 
-The {ggtda} package provides {ggplot2} layers (statistical transformations and geometric elements) and themes for publication-quality plots of data arising from topological objects and models. Persistent homology can be computed for continuous functions and Reeb graphs as well as point clouds, and ggtda layers are in development for numerous plot types that have been proposed to gain insight from persistence data. In addition, ggtda also provides layers to conveniently plot ball covers, Vietoris–Rips complexes, and Čech complexes for 2-dimensional point clouds.
+An R interface to the [ReebGraphPairing](https://github.com/USFDataVisualization/ReebGraphPairing) Java program to compute extended persistent homology of Reeb graphs via pairing of critical points.
+Reeb graphs may be represented as {igraph}, {network}, or other objects, as well as by unclassed data in suitable forms.
 
-* [GitHub](https://github.com/tdaverse/ggtda/)
+
 
 #### plt
 
-{plt} provides an {Rcpp} interface to [the Persistence Landscapes Toolbox](https://www2.math.upenn.edu/~dlotko/persistenceLandscape.html).
+An {Rcpp} interface to [the Persistence Landscapes Toolbox](https://www2.math.upenn.edu/~dlotko/persistenceLandscape.html).
 The C++ class for persistence landscapes is exposed as an Rcpp module and wrapped as an S4 class. Vector space operations and additional routines are provided through R.
 
 * [GitHub](https://github.com/corybrunson/plt/)
 
-#### tdarec
+#### ggtda
 
-This is a [{recipes}](https://github.com/tidymodels/recipes) extension that provides pre-processing steps to compute persistent homology from data and to calculate vectorizations of persistence diagrams.
+Statistical transformations, geometric constructions, and other {ggplot2} elements for publication-quality plots of data arising from topological objects and models. Persistent homology can be computed for continuous functions and Reeb graphs as well as point clouds, and ggtda layers are in development for numerous plot types that have been proposed to gain insight from persistence data. In addition, ggtda also provides layers to conveniently plot ball covers, Vietoris–Rips complexes, and Čech complexes for 2-dimensional point clouds.
 
-* [GitHub](https://github.com/corybrunson/tdarec)
+* [GitHub](https://github.com/tdaverse/ggtda/)
 
 ### Conceived packages
-
-#### phutil
-
-A helper package comprising low-level persistent homology tools (**PH util**ities) shared by multiple tdaverse packages, for example an S3 class for persistence data and engine deployment for computing persistent homology.
-(Persistence is phutil.)
 
 #### Cover
 
 Covers of data sets are ubiquitous in lower-level topological methods, including mapper-like constructions.
 In order to allow more flexible implementations, the object-oriented package {Cover} would spin off the `CoverRef` R6 class from {Mapper} and introduce tools for efficiently storing and analyzing towers and other aggregates of covers.
-
-#### reebit ?
-
-Reeb graphs can be represented as graphs with height or value attributes, but few methods are available to perform basic computations like critical point pairing.
-For starters, an R wrapper of the [ReebGraphPairing](https://github.com/USFDataVisualization/ReebGraphPairing) Java program could produce (extended) persistent homology for downstream analysis.
 
 #### perrrsist / filtratr ?
 
