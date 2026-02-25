@@ -42,6 +42,15 @@ An R interface to the Ripser and Cubical Ripser persistent homology computationa
 * [GitHub](https://github.com/tdaverse/ripserr)
 * [CRAN](https://cran.r-project.org/package=ripserr)
 
+#### rgph
+
+An R interface to the [ReebGraphPairing](https://github.com/USFDataVisualization/ReebGraphPairing) Java program to pair critical points of Reeb graphs.
+Reeb graphs may be represented as {igraph} or {network} objects, or using a new minimal S3 class.
+Pairings can then be post-processed to extended persistent homology.
+
+* [GitHub](https://github.com/tdaverse/rgph)
+* [CRAN](https://cran.r-project.org/package=rgph)
+
 #### phutil
 
 A helper package comprising low-level persistent homology tools (**PH util**ities) to be shared by multiple tdaverse packages, currently an S3 class for persistence data and a {cpp11} interface to the [Hera](https://github.com/anigmetov/hera) library to compute Wasserstein distances.
@@ -78,7 +87,7 @@ A [{recipes}](https://github.com/tidymodels/recipes) and [{dials}](https://githu
 #### TDAstats
 
 {TDAstats} was originally designed with three goals in mind: to compute persistent homology, to visualize persistence data, and to perform topological statistical inferenence between data sets.
-Since its release, these tasks have been superseded by {risperr}, {ggtda}, and {inphr}, respectively.
+Since its release, these tasks have been superseded by {risperr}, {ggtda}, {phutil}, and {inphr}.
 Because it is widely used and has few dependencies, {TDAstats} will be maintained as legacy software.
 
 * [GitHub](https://github.com/rrrlw/tdastats)
@@ -100,13 +109,6 @@ Previous versions of this package included the simplex tree class and the maxmin
 * [GitHub](https://github.com/peekxc/Mapper/)
 * [simplextree-0.9.1 devel](https://github.com/corybrunson/Mapper/tree/simplextree-0.9.1)
 
-#### rgp
-
-An R interface to the [ReebGraphPairing](https://github.com/USFDataVisualization/ReebGraphPairing) Java program to compute extended persistent homology of Reeb graphs via pairing of critical points.
-Reeb graphs may be represented as {igraph}, {network}, or other objects, as well as by unclassed data in suitable forms.
-
-
-
 #### plt
 
 An {Rcpp} interface to [the Persistence Landscapes Toolbox](https://www2.math.upenn.edu/~dlotko/persistenceLandscape.html).
@@ -127,7 +129,7 @@ Statistical transformations, geometric constructions, and other {ggplot2} elemen
 Covers of data sets are ubiquitous in lower-level topological methods, including mapper-like constructions.
 In order to allow more flexible implementations, the object-oriented package {Cover} would spin off the `CoverRef` R6 class from {Mapper} and introduce tools for efficiently storing and analyzing towers and other aggregates of covers.
 
-#### perrrsist / filtratr ?
+#### phreng
 
 A great advantage of [GUDHI](https://gudhi.inria.fr/) is the ability to work directly with simplicial filtrations, including to construct them from raw data and to compute persistent data from them.
 {ripserr} sidesteps these objects, but they can be performed using {TDA}.
