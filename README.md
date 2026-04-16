@@ -53,7 +53,7 @@ Pairings can then be post-processed to extended persistent homology.
 
 #### phutil
 
-A helper package comprising low-level persistent homology tools (**PH util**ities) to be shared by multiple tdaverse packages, currently an S3 class for persistence data and a {cpp11} interface to the [Hera](https://github.com/anigmetov/hera) library to compute Wasserstein distances.
+A helper package comprising low-level **p**ersistent **h**omology **util**ities to be shared by multiple tdaverse packages, currently an S3 class for persistence data and a {cpp11} interface to the [Hera](https://github.com/anigmetov/hera) library to compute Wasserstein distances.
 (Persistence is phutil.)
 
 * [GitHub](https://github.com/tdaverse/phutil)
@@ -109,6 +109,12 @@ Previous versions of this package included the simplex tree class and the maxmin
 * [GitHub](https://github.com/peekxc/Mapper/)
 * [simplextree-0.9.1 devel](https://github.com/corybrunson/Mapper/tree/simplextree-0.9.1)
 
+#### phreng
+
+Several R packages compute persistent homology, providing a range of filtrations for a range of data types but through very different syntactic conventions.
+This package provides a common API to **p**ersistent **h**omology **R** **eng**ines through the use of [{S7}](https://rconsortium.github.io/S7/) specifications and double-dispatch deployment, in the spirit of [{parsnip}](https://github.com/tidymodels/parsnip) but much lighterweight.
+It is intended for use by {ggtda} and {tdarec}.
+
 #### plt
 
 An {Rcpp} interface to [the Persistence Landscapes Toolbox](https://www2.math.upenn.edu/~dlotko/persistenceLandscape.html).
@@ -129,7 +135,7 @@ Statistical transformations, geometric constructions, and other {ggplot2} elemen
 Covers of data sets are ubiquitous in lower-level topological methods, including mapper-like constructions.
 In order to allow more flexible implementations, the object-oriented package {Cover} would spin off the `CoverRef` R6 class from {Mapper} and introduce tools for efficiently storing and analyzing towers and other aggregates of covers.
 
-#### phreng
+#### Filtration
 
 A great advantage of [GUDHI](https://gudhi.inria.fr/) is the ability to work directly with simplicial filtrations, including to construct them from raw data and to compute persistent data from them.
 {ripserr} sidesteps these objects, but they can be performed using {TDA}.
