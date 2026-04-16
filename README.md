@@ -115,6 +115,8 @@ Several R packages compute persistent homology, providing a range of filtrations
 This package provides a common API to **p**ersistent **h**omology **R** **eng**ines through the use of [{S7}](https://rconsortium.github.io/S7/) specifications and double-dispatch deployment, in the spirit of [{parsnip}](https://github.com/tidymodels/parsnip) but much lighterweight.
 It is intended for use by {ggtda} and {tdarec}.
 
+* [GitHub](https://github.com/tdaverse/phreng/)
+
 #### plt
 
 An {Rcpp} interface to [the Persistence Landscapes Toolbox](https://www2.math.upenn.edu/~dlotko/persistenceLandscape.html).
